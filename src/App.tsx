@@ -19,14 +19,6 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // --- Components ---
 
-const VerusaLogo = ({ className = "w-6 h-6" }: { className?: string }) => (
-  <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="22" strokeLinecap="round" className={className}>
-    <line x1="35" y1="35" x2="55" y2="55" />
-    <line x1="10" y1="60" x2="30" y2="80" />
-    <line x1="95" y1="35" x2="45" y2="85" />
-  </svg>
-);
-
 const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -41,7 +33,7 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2">
-            <VerusaLogo className="w-6 h-6 text-secondary" />
+            <img src="/assets/logo.svg" alt="Verusa" className="w-6 h-6" style={{ filter: isDark ? 'none' : 'brightness(0)' }} />
             <span className="text-xl font-extrabold tracking-tighter font-headline">Verusa</span>
           </div>
         </div>
@@ -90,28 +82,33 @@ const Hero = () => {
         className="flex flex-col sm:flex-row gap-4 mb-24"
       >
         <a href="https://calendly.com/ck76" target="_blank" rel="noopener noreferrer" className="bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold text-lg transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,229,200,0.3)] inline-flex items-center justify-center">Book a Case Workflow Demo</a>
-        <button className="bg-surface-container border border-on-surface/10 px-10 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-high transition-all">Watch Case Walkthrough</button>
+        <a href="#case-walkthrough" className="bg-surface-container border border-on-surface/10 px-10 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-high transition-all inline-flex items-center justify-center">Watch Case Walkthrough</a>
       </motion.div>
 
       {/* High Impact Visual */}
       <motion.div 
+        id="case-walkthrough"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
         className="w-full max-w-6xl aspect-[21/9] rounded-2xl relative group"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
         <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-2xl blur-2xl opacity-50"></div>
         
         <div className="relative h-full w-full rounded-2xl border border-on-surface/10 overflow-hidden glass-panel">
-          <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGO1qUNqCXYYC-2RIhV9sxPA1Ueuk6cqmkdJRF8kJt56Owt7xMQGHq5KFtPCRrKnfxoSVesvJJdFt-WfYpoMZOXyOwi4gjlfCb5Ap8NmlQnwcXFafMzwj20IA_xFE_T81EdBnULCuk3KtjhQJX7kAjSeqidcMdd5NXJTD5PPkKrmgCj9r0dIzGZz66OGYAzKeeVCNBlIE3RUDituHi0FwKVeGTTm9GDK7XZHVeskKVDzHHPhiMlZTO29IOCSPf9kco-xN0hgKdlA" 
-            alt="Sophisticated AI data visualization of blockchain clusters" 
-            className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+          <video 
+            src="/assets/clideo_editor_bf2ce36900644a9aa2e5c52a024df0cd.mp4" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            controls
+            className="w-full h-full object-cover"
           />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
           
           {/* UI Overlay elements */}
-          <div className="absolute top-10 right-10 p-4 rounded-xl glass-panel border border-secondary/20 space-y-3 w-64 text-left hidden md:block">
+          <div className="absolute top-10 right-10 p-4 rounded-xl glass-panel border border-secondary/20 space-y-3 w-64 text-left hidden md:block z-20">
             <div className="flex justify-between items-center">
               <span className="text-[10px] font-mono text-secondary">RISK VECTOR: BRIDGE_HOP</span>
               <span className="text-[10px] font-mono text-on-surface-variant">0.08s</span>
@@ -122,7 +119,7 @@ const Hero = () => {
             <p className="text-[11px] text-on-surface-variant font-mono">Analyzing 47 sub-traces across 3 protocols...</p>
           </div>
 
-          <div className="absolute bottom-10 left-10 p-6 glass-panel border border-primary/20 max-w-md text-left hidden md:block">
+          <div className="absolute bottom-10 left-10 p-6 glass-panel border border-primary/20 max-w-md text-left hidden md:block z-20">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <Brain className="text-primary" size={20} />
@@ -376,14 +373,14 @@ const TeamSection = () => {
           <div className="relative z-10 grid lg:grid-cols-[1.2fr_2fr] gap-16 items-start">
             <div>
               <span className="text-xs font-bold text-secondary tracking-widest uppercase mb-6 block">The Architects</span>
-              <h2 className="text-4xl md:text-5xl font-headline font-extrabold mb-8 leading-[1.1] text-on-surface">Built by people who <br/><span className="text-secondary">understand the investigation gap.</span></h2>
+              <h2 className="text-4xl md:text-5xl font-headline font-extrabold mb-8 leading-[1.1] text-on-surface">Built by people who <br className="hidden md:block"/><span className="text-secondary">understand the investigation gap.</span></h2>
               <p className="text-on-surface-variant text-lg leading-relaxed mb-8">Verusa was built from a simple observation: compliance teams already have risk data, but still spend too much time turning that data into decisions they can evidence and defend.</p>
               
               <blockquote className="border-l-2 border-secondary/30 pl-4 py-1 italic text-on-surface-variant text-sm mb-10">
                 "Our job is to close the gap between raw blockchain signals and evidence-backed compliance decisions."
               </blockquote>
               
-              <div className="flex items-center gap-12 pt-8 border-t border-on-surface/10">
+              <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12 pt-8 border-t border-on-surface/10">
                 <div>
                   <p className="text-3xl font-bold font-headline text-on-surface">Up to 60%</p>
                   <p className="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">Effort Reduction</p>
@@ -405,8 +402,8 @@ const TeamSection = () => {
                 { name: 'James Chacko', role: 'Advisor', color: 'primary', cred: 'Deep expertise in digital asset regulation', linkedin: 'https://www.linkedin.com/in/james-chacko-9233a71/' },
                 { name: 'Shankar Bhaskaran', role: 'Advisor', color: 'secondary', cred: 'Strategic growth and GTM expert', linkedin: 'https://www.linkedin.com/in/shankar-bhaskaran-6772271/' }
               ].map((member, idx) => (
-                <div key={idx} className={`relative glass-panel rounded-2xl p-4 border border-on-surface/10 hover:border-${member.color === 'secondary' ? 'secondary' : 'primary'}/30 transition-colors flex items-center justify-between gap-4 group/card`}>
-                  <div className="flex items-center gap-4">
+                <div key={idx} className={`relative glass-panel rounded-2xl p-4 border border-on-surface/10 hover:border-${member.color === 'secondary' ? 'secondary' : 'primary'}/30 transition-colors flex items-start sm:items-center justify-between gap-4 min-w-0 group/card`}>
+                  <div className="flex items-start sm:items-center gap-4 min-w-0">
                     <div className={`w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-${member.color}/20 to-transparent flex items-center justify-center border border-${member.color}/20 overflow-hidden`}>
                       <span className={`text-lg font-black text-${member.color} font-headline`}>{member.name[0]}</span>
                     </div>
@@ -454,13 +451,13 @@ const CTASection = () => {
   );
 };
 
-const Footer = () => {
+const Footer = ({ isDark }: { isDark: boolean }) => {
   return (
     <footer className="w-full py-16 px-8 max-w-7xl mx-auto border-t border-on-surface/5">
       <div className="flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
-            <VerusaLogo className="w-5 h-5 text-secondary" />
+            <img src="/assets/logo.svg" alt="Verusa" className="w-5 h-5" style={{ filter: isDark ? 'none' : 'brightness(0)' }} />
             <span className="text-lg font-extrabold tracking-tighter font-headline">Verusa</span>
           </div>
           <span className="text-on-surface-variant font-body text-sm antialiased">The AI intelligence layer for digital asset compliance.<br/>© 2026 Verusa. All rights reserved.</span>
@@ -513,7 +510,7 @@ export default function App() {
         <TeamSection />
         <CTASection />
       </main>
-      <Footer />
+      <Footer isDark={isDark} />
     </div>
   );
 }
