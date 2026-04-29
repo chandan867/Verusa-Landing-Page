@@ -395,12 +395,12 @@ const TeamSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { name: 'Stefano', role: 'Chief Commercial Officer', color: 'primary', cred: 'Former revenue leader at Elliptic', linkedin: 'https://www.linkedin.com/in/stefano-c-97b491a/' },
-                { name: 'Oliver', role: 'Chief Compliance & Product Officer', color: 'secondary', cred: 'Former MLRO with deep FinCEN & FCA expertise', linkedin: 'https://www.linkedin.com/in/oliver-r-b95747216/' },
+                { name: 'Stefano', role: 'Chief Commercial Officer', color: 'primary', cred: 'Commercial and growth leader with deep experience in financial services and crypto markets, scaling operations, partnerships, and revenue across global regions.', linkedin: 'https://www.linkedin.com/in/stefano-c-97b491a/' },
+                { name: 'Oliver', role: 'Chief Compliance & Product Officer', color: 'secondary', cred: 'Financial crime and AML specialist helping fintechs and crypto firms design audit-ready, risk-based compliance frameworks aligned with global regulatory standards.', linkedin: 'https://www.linkedin.com/in/oliver-r-b95747216/' },
                 { name: 'Kapil Jain', role: 'Chief Architect', color: 'secondary', cred: 'Led engineering for enterprise banking platforms', linkedin: 'https://www.linkedin.com/in/kapil-jain-9829aa4/' },
-                { name: 'Chandan', role: 'CTO', color: 'primary', cred: 'Expert in high-throughput blockchain indexing', linkedin: 'https://www.linkedin.com/in/chandankumar7654/' },
-                { name: 'James Chacko', role: 'Advisor', color: 'primary', cred: 'Deep expertise in digital asset regulation', linkedin: 'https://www.linkedin.com/in/james-chacko-9233a71/' },
-                { name: 'Shankar Bhaskaran', role: 'Advisor', color: 'secondary', cred: 'Strategic growth and GTM expert', linkedin: 'https://www.linkedin.com/in/shankar-bhaskaran-6772271/' }
+                { name: 'Chandan', role: 'CTO', color: 'primary', cred: 'AI and fintech builder focused on automating compliance and risk for stablecoins—bridging AI, blockchain, and regulation to enable scalable, trust-driven financial systems.', linkedin: 'https://www.linkedin.com/in/chandankumar7654/' },
+                { name: 'James Chacko', role: 'Advisor', color: 'primary', cred: 'Tech entrepreneur driving decentralized innovation across AI, blockchain, and open protocols—focused on building scalable, trust-first digital financial infrastructure.', linkedin: 'https://www.linkedin.com/in/james-chacko-9233a71/' },
+                { name: 'Shankar Bhaskaran', role: 'Advisor', color: 'secondary', cred: 'GRC and quality management expert transforming regulatory complexity into strategic advantage through integrated, performance-driven compliance systems.', linkedin: 'https://www.linkedin.com/in/shankar-bhaskaran-6772271/' }
               ].map((member, idx) => (
                 <div key={idx} className={`relative glass-panel rounded-2xl p-4 border border-on-surface/10 hover:border-${member.color === 'secondary' ? 'secondary' : 'primary'}/30 transition-colors flex items-start sm:items-center justify-between gap-4 min-w-0 group/card`}>
                   <div className="flex items-start sm:items-center gap-4 min-w-0">
